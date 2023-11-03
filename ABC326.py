@@ -37,8 +37,8 @@ class ABC326():
         #print(counter.elements)
         #print(counter.keys())
         print(answer)
-
         return None
+    
     def C2(self) -> None:
         from collections import Counter
         n, m = map(int, input().split())
@@ -70,7 +70,7 @@ class ABC326():
         print(answer)
         return None
     
-    def C3(self):
+    def C3(self) -> None:
         """
         a[right]：右端のプレゼントの座標
         a[left]：左端のプレゼントの座標
@@ -93,7 +93,6 @@ class ABC326():
                 #右端をインクリメント
                 right += 1
             res = max(res, right-left)
-            #print(right-left)
         print(res)
 
 
