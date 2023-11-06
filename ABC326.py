@@ -81,24 +81,32 @@ class ABC326():
         a = list(map(int,input().split()))
         a.sort()
         #mの最大値よりも大きい値を追加
-        a.append(9000000000000)
+        #a.append(9000000000000)
+        a.append(a[-1]+10**9)
         res = 0
         right = 0
         #プレゼントの数だけ繰り返す
         for left in range(n):
-            print("-----------")
             #右端が左端＋mになるまで繰り返す
+            #a[left]はスタート地点、そこから+mした座標までが指定できる範囲
+            #その範囲内で、リストaの一番右端の座標を指定するためにrightを増やす
             while a[right] < a[left]+m:
-                print(a[right])
+                #print(a[right])
                 #右端をインクリメント
                 right += 1
+            #right,leftはリストaのインデックスなので、right-leftが獲得できるプレゼントの個数になる。
             res = max(res, right-left)
         print(res)
+    
+    def D(self) -> None:
 
+        return None
 
 solve = ABC326()
 #solve.A()
 #solve.B()
 #solve.C()
 #solve.C2()
-solve.C3()
+#solve.C3()
+solve.D()
+

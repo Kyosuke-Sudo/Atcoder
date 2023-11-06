@@ -92,14 +92,14 @@ class ABC():
         #B = list(map(int, input().split()))
         A = list(map(lambda x:int(x)-1, input().split()))
         B = list(map(lambda x:int(x)-1, input().split()))
-
+        print(A)
+        print(B)
         #グラフ
-        #G = [set() for i in range(n)]
         edge = [[] for i in range(n)]
         for i,j in zip(A,B):
             edge[i].append(j)
             edge[j].append(i)
-        #print(edge)
+        print(edge,"edge")
 
         check = [False]*n
         INF = float("inf")
@@ -114,6 +114,38 @@ class ABC():
                 exit()
         
         print("Yes")
+        return None
+    def D2(self) -> None:
+        n,m = map(int, input().split())
+        A = list(map(int, input().split()))
+        B = list(map(int, input().split()))
+        G = [[] for _ in range(200200)]
+        X = [-1]*200200 
+        bipartite = True
+        
+        def DFS(c, x, bipartite):
+            X[c] = x
+            for d in G[c]:
+                if X[d] == -1:
+                    DFS(d, 1-x, bipartite)
+                elif X[d] == X[c]:
+                    bipartite = False
+        
+        for i in range(m):
+            A[i] -= 1
+            B[i] -= 1
+            G[A[i]].append(B[i])
+            G[B[i]].append(A[i])
+            
+        for i in range(n):
+            if X[i] == -1:
+                DFS(i, 0, bipartite)
+        
+        if bipartite:
+            print("Yes")
+        else:
+            print("No")
+        return None
 
 
 
@@ -122,3 +154,4 @@ solve = ABC()
 #solve.B()
 #solve.C()
 #solve.D()
+#solve.D2()
